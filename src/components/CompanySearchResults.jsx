@@ -8,8 +8,7 @@ const CompanySearchResults = () => {
   const params = useParams()
 
   const baseEndpoint = 'https://strive-benchmark.herokuapp.com/api/jobs?search='
-  //https://strive-benchmark.herokuapp.com/api/jobs?search=
-
+  
   useEffect(() => {
     getJobs()
     // eslint-disable-next-line react-hooks/exhaustive-deps
