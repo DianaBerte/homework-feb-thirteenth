@@ -1,11 +1,16 @@
 import { useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import Job from './Job'
+import { getJobsActionAsync } from '../redux/actions'
+import { jobsSearchResultsReducer } from '../redux/reducers/jobsSearchResultsReducer'
+import { fetchJobs } from '../redux/actions/actionCreators'
 
 const MainSearch = () => {
   const [query, setQuery] = useState('')
-  const [jobs, setJobs] = useState([])
+  const dispatch = useDispatch();
+  const jobs = useSelector((state) => state.jobsSearchResultsReducer.jobs)
 
   const navigate = useNavigate()
 
@@ -17,6 +22,9 @@ const MainSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    dispatch(fetchJobs(baseEndpoint, query))
+
+    dispatch(getJobsActionAsync(query))
 
     try {
       const response = await fetch(baseEndpoint + query + '&limit=20')

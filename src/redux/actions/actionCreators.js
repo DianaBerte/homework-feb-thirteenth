@@ -20,3 +20,19 @@ export const getJobs = (payload) => {
     payload: payload,
   };
 };
+
+export const fetchJobs = (baseEndpoint, query) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(baseEndpoint + query + "&limit=20");
+      if (response.ok) {
+        const { data } = await response.json();
+        dispatch(getJobs(data));
+      } else {
+        alert("Error fetching results");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
