@@ -1,9 +1,7 @@
 import { GET_JOBS } from "../actions";
 
 const initialState = {
-  favourite: {
-    list: [],
-  },
+  jobs: [],
 };
 
 const jobsSearchResultsReducer = (state = initialState, action) => {
@@ -11,7 +9,7 @@ const jobsSearchResultsReducer = (state = initialState, action) => {
     case GET_JOBS:
       return {
         ...state,
-        list: action.payload,
+        jobs: action.payload,
       };
 
     default:
