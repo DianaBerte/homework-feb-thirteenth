@@ -2,10 +2,12 @@ import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToFavourites, removeFromFavourites } from '../redux/actions/actionCreators'
+// import { ADD_TO_FAVOURITE, REMOVE_FROM_FAVOURITE } from '../redux/actions'
+import { addToFavouriteAction, removeFromFavouriteAction } from '../redux/actions'
+// import { addToFavourites, removeFromFavourites } from '../redux/actions/actionCreators'
 
 const Job = ({ data }) => {
-  const favourites = useSelector((state) => state.favouritesReducer.favourite.list)
+  const favourites = useSelector((state) => state.favourite.list)
   const dispatch = useDispatch()
 
   const isFav = favourites.includes(data.company_name)
@@ -21,12 +23,9 @@ const Job = ({ data }) => {
             color="gold"
             size={16}
             className="mr-2 my-auto"
-            onClick={() =>
-              dispatch(removeFromFavourites(data.company_name)
+            onClick={() => dispatch(removeFromFavouriteAction(data.company_name))}
                 // type: REMOVE_FROM_FAVOURITE,
-                // payload: data.company_name,
-              )
-            }
+                // payload: data.company_name,})
           />
         ) : (
           <Star
@@ -34,10 +33,11 @@ const Job = ({ data }) => {
             size={16}
             className="mr-2 my-auto"
             onClick={() =>
-              dispatch(addToFavourites(data.company_name)
+              dispatch(
+                addToFavouriteAction(data.company_name)
                 // type: ADD_TO_FAVOURITE,
                 // payload: data.company_name,
-              )
+            )
             }
           />
         )}

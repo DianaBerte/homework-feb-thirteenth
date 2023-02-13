@@ -1,15 +1,15 @@
 import { GET_JOBS } from "../actions";
 
 const initialState = {
-  jobs: [],
+  result: [],
 };
 
-const jobsSearchResultsReducer = (state = initialState, action) => {
+const jobReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_JOBS:
       return {
         ...state,
-        jobs: action.payload,
+        result: action.payload,
       };
 
     default:
@@ -17,4 +17,4 @@ const jobsSearchResultsReducer = (state = initialState, action) => {
   }
 };
 
-export default jobsSearchResultsReducer;
+export default jobReducer;

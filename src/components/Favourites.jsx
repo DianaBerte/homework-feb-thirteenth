@@ -9,10 +9,11 @@ import {
 import { StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { removeFromFavourites } from '../redux/actions/actionCreators'
+import { removeFromFavouriteAction,  } from '../redux/actions'
+// import { removeFromFavourites } from '../redux/actions/actionCreators'
 
 const Favourites = () => {
-  const favourites = useSelector((state) => state.favouritesReducer.favourite.list)
+  const favourites = useSelector((state) => state.favourite.list)
   const dispatch = useDispatch()
 
   const navigate = useNavigate()
@@ -31,10 +32,10 @@ const Favourites = () => {
                 <StarFill
                   className="mr-2"
                   onClick={() =>
-                    dispatch(removeFromFavourites(fav)
+                    dispatch(removeFromFavouriteAction(fav)
                       // type: REMOVE_FROM_FAVOURITE,
                       // payload: fav,
-                    )
+                  )
                   }
                 />
                 <Link to={'/' + fav}>{fav}</Link>
