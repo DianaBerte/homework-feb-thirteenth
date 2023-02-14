@@ -7,8 +7,7 @@ export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 
 //action creator, a function returning an action (or a function)
 
-const baseEndpoint =
-  "https://strrrrrrrrrrive-benchmark.herokuapp.com/api/jobs?search=";
+const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
 export const addToFavouriteAction = (company) => ({
   type: ADD_TO_FAVOURITE,
