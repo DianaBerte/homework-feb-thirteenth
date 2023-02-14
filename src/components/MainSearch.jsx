@@ -40,7 +40,6 @@ const MainSearch = () => {
               placeholder="type and press Enter"
             />
           </Form>
-          {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
         </Col>
         <Col xs={10} className="mx-auto mb-5">
           {jobsFromRedux.map((jobData) => (
@@ -48,6 +47,7 @@ const MainSearch = () => {
           ))}
         </Col>
       </Row>
+      {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
     </Container>
   )
 
