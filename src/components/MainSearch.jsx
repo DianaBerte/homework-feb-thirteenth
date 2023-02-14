@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Job from './Job'
 import { getBooksAction } from '../redux/actions'
 // import { jobsSearchResultsReducer } from '../redux/reducers/job'
-import { fetchJobs } from '../redux/actions/actionCreators'
+// import { fetchJobs } from '../redux/actions/actionCreators'
 
 const MainSearch = () => {
   const [query, setQuery] = useState('')
@@ -40,6 +40,7 @@ const MainSearch = () => {
               placeholder="type and press Enter"
             />
           </Form>
+          {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
         </Col>
         <Col xs={10} className="mx-auto mb-5">
           {jobsFromRedux.map((jobData) => (
@@ -47,7 +48,6 @@ const MainSearch = () => {
           ))}
         </Col>
       </Row>
-      {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
     </Container>
   )
 

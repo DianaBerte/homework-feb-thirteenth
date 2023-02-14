@@ -24,7 +24,7 @@ export const getBooksAction = (query) => {
       const response = await fetch(baseEndpoint + query + "&limit=20");
       if (response.ok) {
         const { data } = await response.json();
-        console.log(data);
+        // console.log(data);
         dispatch({
           type: GET_JOBS,
           payload: data,

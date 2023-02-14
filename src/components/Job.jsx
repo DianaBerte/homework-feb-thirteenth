@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Spinner } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,11 +12,13 @@ const Job = ({ data }) => {
 
   const isFav = favourites.includes(data.company_name)
 
+
   return (
     <Row
       className="mx-0 mt-3 p-3"
       style={{ border: '1px solid #00000033', borderRadius: 4 }}
     >
+
       <Col xs={3}>
         {isFav ? (
           <StarFill
