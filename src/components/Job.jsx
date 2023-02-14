@@ -1,4 +1,4 @@
-import { Row, Col, Spinner } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Star, StarFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'

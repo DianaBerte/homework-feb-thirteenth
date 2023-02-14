@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container, Row, Col, Form, Button, Spinner ,Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Job from './Job'
-import { getBooksAction } from '../redux/actions'
+import { getBooksAction, GET_JOBS } from '../redux/actions'
 // import { jobsSearchResultsReducer } from '../redux/reducers/job'
 // import { fetchJobs } from '../redux/actions/actionCreators'
 
@@ -23,7 +23,13 @@ const MainSearch = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     dispatch(getBooksAction(query))}
-  
+
+    useEffect(() => {
+      dispatch({
+        type: GET_JOBS,
+        payload: [],
+      })
+    }, []);  
 
   return (
     <Container>
