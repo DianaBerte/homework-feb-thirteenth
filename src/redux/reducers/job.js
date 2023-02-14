@@ -1,7 +1,9 @@
-import { GET_JOBS } from "../actions";
+import { GET_JOBS, GET_JOBS_LOADING } from "../actions";
 
 const initialState = {
   result: [],
+  isLoading: true,
+  isError: false,
 };
 
 const jobReducer = (state = initialState, action) => {
@@ -10,6 +12,12 @@ const jobReducer = (state = initialState, action) => {
       return {
         ...state,
         result: action.payload,
+      };
+
+    case GET_JOBS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
 
     default:

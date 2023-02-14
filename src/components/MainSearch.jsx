@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Job from './Job'
-import { getBooksAction, getJobsActionAsync } from '../redux/actions'
+import { getBooksAction } from '../redux/actions'
 // import { jobsSearchResultsReducer } from '../redux/reducers/job'
 import { fetchJobs } from '../redux/actions/actionCreators'
 
@@ -12,6 +12,8 @@ const MainSearch = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const jobsFromRedux = useSelector((state) => state.job.result)
+
+  const applicationSpinner = useSelector((state) => state.job.isLoading)
 
   const handleChange = (e) => {
     setQuery(e.target.value)
@@ -45,6 +47,7 @@ const MainSearch = () => {
           ))}
         </Col>
       </Row>
+      {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
     </Container>
   )
 
