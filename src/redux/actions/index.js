@@ -2,11 +2,13 @@ export const REMOVE_FROM_FAVOURITE = "REMOVE_FROM_FAVOURITE";
 export const ADD_TO_FAVOURITE = "ADD_TO_FAVOURITE";
 export const GET_JOBS = "GET_JOBS";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
+export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 // export const GET_BOOKS = "GET_BOOKS";
 
 //action creator, a function returning an action (or a function)
 
-const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+const baseEndpoint =
+  "https://strrrrrrrrrrive-benchmark.herokuapp.com/api/jobs?search=";
 
 export const addToFavouriteAction = (company) => ({
   type: ADD_TO_FAVOURITE,
@@ -39,12 +41,20 @@ export const getBooksAction = (query) => {
           type: GET_JOBS_LOADING,
           payload: false,
         });
+        dispatch({
+          type: GET_JOBS_ERROR,
+          payload: true,
+        });
       }
     } catch (error) {
       // console.log(error);
       dispatch({
         type: GET_JOBS_LOADING,
         payload: false,
+      });
+      dispatch({
+        type: GET_JOBS_ERROR,
+        payload: true,
       });
     }
   };

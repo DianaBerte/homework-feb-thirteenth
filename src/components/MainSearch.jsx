@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Container, Row, Col, Form, Button, Spinner } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button, Spinner ,Alert } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Job from './Job'
@@ -14,6 +14,7 @@ const MainSearch = () => {
   const jobsFromRedux = useSelector((state) => state.job.result)
 
   const applicationSpinner = useSelector((state) => state.job.isLoading)
+  const applicationError = useSelector((state) => state.job.isError)
 
   const handleChange = (e) => {
     setQuery(e.target.value)
@@ -47,6 +48,7 @@ const MainSearch = () => {
           ))}
         </Col>
       </Row>
+      {applicationError && (<Alert variant="danger" className="mr-2 text-center">Oh no, error occurred!</Alert> )}
       {applicationSpinner && ( <Spinner className='mr-2' animation='border' variant='success' /> )}
     </Container>
   )
